@@ -1,0 +1,12 @@
+syntax = "proto3";
+service Auth {
+  rpc CreateToken (CreateTokenRequest) returns (CreateTokenResponse) {}
+}
+
+message CreateTokenRequest {
+  string id = 1;
+  string name = 2;
+}
+message CreateTokenResponse {
+  string token = 1;
+}
