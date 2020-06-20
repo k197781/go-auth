@@ -23,7 +23,7 @@ func (a auth) CreateToken(ctx context.Context, in *pb.CreateTokenRequest) (*pb.C
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 		"id":   in.Id,
 		"name": in.Name,
-		"nbf":  now.AddDate(0, 0, 7).Unix(),
+		"exp":  now.AddDate(0, 0, 7).Unix(),
 	})
 	tokenString, err := token.SignedString([]byte(a.secretKey))
 	if err != nil {
